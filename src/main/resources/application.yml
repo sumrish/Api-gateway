@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: api-gateway
+    #    Comment below lines while generating JAR - Also remove gateway-application.yml while generating JAR and place
+    #    at the same level where JAR is placed.
+ config:
+   import: "gateway-application.yml"
+
+

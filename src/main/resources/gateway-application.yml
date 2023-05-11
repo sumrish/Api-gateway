@@ -1,0 +1,22 @@
+server:
+  port: 443
+#  port: 8080
+  ssl:
+    key-store-password: test
+    key-store-type: PKCS12
+    key-store: classpath:star.test.com.pfx
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri: http://localhost:9093/
+          predicates:
+            - Path=/api/**

@@ -1,0 +1,37 @@
+server:
+  port: 443
+#  port: 8080
+  ssl:
+    key-store-password: youcloud
+    key-store-type: PKCS12
+    key-store: classpath:star.youcloudpay.com.pfx
+#    file:///Users/sumrishhanif/Documents/YouCloud/springcloud-gateway/target/config/star.youcloudpay.com.pfx
+#    classpath:star.youcloudpay.com.pfx
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: TouchToPay
+          uri: http://localhost:9091/
+          predicates:
+            - Path=/api/**
+
+#        - id: Nigeria_Wallet
+#          uri: http://localhost:9093/
+#          predicates:
+#            - Path=/api/arcaPayment/**
+#        - id: Kenya_Wallets
+#          uri: http://localhost:9092/
+#          predicates:
+#            - Path=/api/kenyaWallet/**
+#        - id: Senegal_Wallet
+#          uri: http://localhost:9094/
+#          predicates:
+#            - Path=/api/orangeWallet/**
